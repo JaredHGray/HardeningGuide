@@ -28,3 +28,14 @@ On competition day you will be assigned a team number **1-24**. The **t** in the
 
 ## General Strategy 
 
+1. Split into teams of two, combining upper and lower classmen 
+2. Each pairing will cover a certain service
+    1. FTP/Shell
+    2. DNS
+    3. Web Server
+    4. Database
+    5. Backup/Router
+3. CTF is a break from services
+    1. If your services are strong and all up, work on CTFs
+    2. Don't spend more than 15min on a challenge 
+    3. work as a team - we will have threads in Slack for each challenge so we can progress as a team
