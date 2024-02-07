@@ -39,3 +39,12 @@ On competition day you will be assigned a team number **1-24**. The **t** in the
     1. If your services are strong and all up, work on CTFs
     2. Don't spend more than 15min on a challenge 
     3. work as a team - we will have threads in Slack for each challenge so we can progress as a team
+
+
+## Tips
+1. create a backup sudo user 
+2. check running processes for hints to malicious scripts 
+    1. ps -ef 
+3. Create scripts to hunt down certain processes
+    1. ex: find the process that logs you out after a time period 
+4. SSH for one user is highly recommended so you can copy and paste into the VM instead of having to manually type everything

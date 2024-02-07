@@ -232,6 +232,9 @@ Here is an example script to obtain all keys stored in the  <span style="color:g
 
 > for user in $(cut -fl -d: /etc/passwd); do echo $user; sudo cat /home/$user/.ssh/authorized_keys; done
 
+Make sure the users who needs ssh keys have the correct file permissions to access them
+> sudo chmod 600 /.ssh/authorized_keys
+
 ### SSH Configuration
 
 In the <span style="color:green;">/etc/ssh/sshd_config</span> file make the following changes
@@ -241,7 +244,7 @@ Port 1337
 PasswordAuthentication no PermitEmptyPasswords no 
 PermitRootLogin no 
 MaxAuthTries 3
-MaxSessions 1
+MaxSessions 1(2 if both of you are ssh'd in)
 AllowUsers Usernamel, Username2, etc DenyUsers Usernamel, Username2, etc
 ```
 
