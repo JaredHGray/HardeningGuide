@@ -421,6 +421,30 @@ Once verified your source files aren't corrupted, update and upgrade the system
 
 > sudo apt  update -y && sudo apt upgrade -y
 
+### Pinned Packages 
+
+Pinned packages are those that have been marked as manually installed or held at a specific version, preventing them from being upgraded.
+
+To check for manually installed packages:
+
+> apt-mark showmanual
+
+To check for held packages (those with a specific version):
+
+> apt-mark showhold
+
+This command will display a list of packages that have been held at a specific version.
+
+If there are no pinned packages, these commands will not output anything.
+
+Unpinning a Manually Installed Package:
+
+> sudo apt-mark unmarkauto package_name
+
+Unpinning a Held Package
+
+> sudo apt-mark unhold package_name
+
 ## Vulnerability Scanning
 
 One option to approaching this challenge is to scan your system for vulnerabilities using a tool such as <span style="color:green;">OpenVAS</span> or <span style="color:green;">Nessus</span>
@@ -438,4 +462,50 @@ Check that the installation worked
 
 ## Backups
 
+REMEMBER to back EVERYTHING up! Whenever you make changes to files, make sure to backup before AND after making changes. This way if the channges you implement mess up your system, you can revert back and if the changes you implement are messed up by the RED team, you can revert back.
+
+Here are a few methods to do so:
+
+### Snapshots
+
+Take regular snapshots of your VM to ensure your changes are protected and you can revert back to a previous state if needed
+
+Steps:
+```
+- Click on the "Snapshots" tab for the selected VM.
+- Click the "Take Snapshot" button.
+- Provide a name for the snapshot (e.g., "Snapshot-1").
+    - make sure to timestamp your name so you know when it was taken!
+- You can also add a description (highly recommended).
+- Click the "Take Snapshot" button to create the snapshot.
+```
+
+- Once the snapshot is created, you will see it listed in the "Snapshots" tab.
+- You can view details, restore, delete, or revert to the snapshot from this interface.
+
+### Secure Copy
+
+When making a change to a config file make a backup of the file to the backup server. Make sure to timestamp the file when you move it so we have a history of config files and don't just have the last version.
+
+> scp  remoteuser@remoteIP:~/file/path/filename  ~/file/path/to/move/it/to
+
+### Copies Within System
+
+A quick and dirty method for making copies is to just makes copies of a file on your VM. This method isn't very secure because if Red team has access to the system then they can delete these backups or see when you make them via logs. However, this method is best utilitzed when editing files for a quickl revert, especially when you mess up. It is not recommended for perserving good copies of files, but rather as a backup for messing up during editing. 
+
+An example would be editing /etc/passwd and accidentally deleting an authorized user. You use your dirty copy to fix the mistake
+
+> cp ~/file/path/filename  ~/file/path/to/move/it/to
+
+If you want to try to be sneaky, store the files in random places on the system. Make sure to write down where you stored them! Then restrict access to the <span style="color:green;">/logs</span> directory to a specific group you are in and no one else
+
+> sudo chown :yourgroup /logs
+
+Set the permissions to allow the group to access the directory but deny access to others.
+
+> sudo chmod 770 /logs
+
+Add users to the group that you've created. Replace "username" with the actual username and "yourgroup" with the group name.
+
+> sudo usermod -aG yourgroup username
 
