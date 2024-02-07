@@ -53,6 +53,46 @@ The <span style="color:green;">-r</span> flag will also remove their home direct
 
 > sudo userdel -r  "username"
 
-### Removing Sudo User
+The below command is a better option that also removes all related files and user groups. (This is a bonus, especially if a faulty user has hidden backdoors in their files and it automatically removed with the user)
+
+> sudo deluser "username"
+
+### Removing User from Group
+
+This will remove a username from any group, this will be great for auditing the sudo group for unnecessary users. One of the following commands will suffice, dpeending on which system you are operating.
+
+> sudo deluser "username" "group" <br>
+> sudo userdel -G "group" "username"
+
+example:
+> sudo userdel gary sudo
+
+### Creating Users
+
+> sudo adduser "username"
+
+- Note: Difference between adduser and useradd is adduser adds a home directory as well as login information Useradd just adds a user without anything by default
+
+### Create Sudo User
+
+> sudo usermod -aG sudo "username"
+
+- Note: same syntax applies to adding a user to any group 
+
+### Disable User Account 
+
+Disable user privileges to all users except those who are authorized in the system. This is a useful command to disable someone if deleting is not an option.
+
+> sudo usermod -L -e 1 "username"
+
+### Change User Password
+
+You should always change the password from the default given password.
+
+> sudo passwd username
+
+Make it strong and write it down somewhere (such as an excel sheet or Slack)
+
+## Pam Files 
 
 
