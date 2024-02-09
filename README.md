@@ -48,3 +48,5 @@ On competition day you will be assigned a team number **1-24**. The **t** in the
 3. Create scripts to hunt down certain processes
     1. ex: find the process that logs you out after a time period 
 4. SSH for one user is highly recommended so you can copy and paste into the VM instead of having to manually type everything
+5. Check the system users to remove any passwords they have to login or any shells they might have - they should have neither of these
+6. What to do if you brick the machine - add into the guide 
