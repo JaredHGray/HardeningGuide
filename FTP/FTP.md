@@ -15,6 +15,7 @@ Here are the proper settings for the ssh_config files.
 5. Permit Empty Passwords: no
 6. PasswordAuthentication: no (if yes, then allows ssh with passwords)
 7. UsePAM: yes
+8. PubkeyAuthentication yes
 
 ### /etc/ssh/sshd_config.d/05-cloud-init.conf
 
@@ -68,11 +69,11 @@ sudo systemctl enable vsftpd
 Make sure you back this file up to a safe location BEFORE modifying it and after getting it working. 
 
 ### Directory Permissions
-certain directories will contain the files that need to be accessed via FTP, in orde rto do so, they must have the correct permission
+certain directories will contain the files that need to be accessed via FTP, in order to do so, they must have the correct permission
 
 ```
 sudo chown -R ftpuser:ftpuser /path/to/ftp/directory
-sudo chmod -R 755 /path/to/ftp/directory
+sudo chmod -R 760 /path/to/ftp/directory
 ```
 
 Replace ftpuser with the actual username and /path/to/ftp/directory with the path to the directory you want to share.
@@ -89,3 +90,12 @@ Replace ftpuser with the actual username and /path/to/ftp/directory with the pat
 - get <file.name>
 
 https://phoenixnap.com/kb/install-ftp-server-on-ubuntu-vsftpd
+
+1. need to add mounting files
+2. switching to ftps
+3. chroot allow list 
+4. search red team site
+6. competition router 
+7. files go in /FTP in root directory
+- make ftp group
+- purge vsftpd and try again 
