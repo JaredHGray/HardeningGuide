@@ -30,6 +30,17 @@ For any user, keys are located at: ~/.ssh/authorized_keys
 - check all authorized users for bad keys 
 - backup good keys to a safe location (refer to backup section of general hardening guide)
 **Note** remember to back up the /etc/shadow file as they may change passwords and if the users need to password authenticate for ssh, then this is vital (totally possible)
+**NOTE** to see current ssh configs:
+``
+sudo sshd -T
+``
+
+### Setup SSH key
+```
+ssh-keygen -t rsa -b 2048 
+ssh-copy-id blueteam@172.16.5.3
+```
+
 
 ### File Permissions
 - The .ssh directory should have 700 permissions 
@@ -95,7 +106,6 @@ https://phoenixnap.com/kb/install-ftp-server-on-ubuntu-vsftpd
 2. switching to ftps
 3. chroot allow list 
 4. search red team site
-6. competition router 
 7. files go in /FTP in root directory
 - make ftp group
-- purge vsftpd and try again 
+- assign all users to it 
