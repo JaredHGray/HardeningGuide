@@ -109,3 +109,17 @@ https://phoenixnap.com/kb/install-ftp-server-on-ubuntu-vsftpd
 7. files go in /FTP in root directory
 - make ftp group
 - assign all users to it 
+
+### Static IP location
+sudo nano /etc/netplan/01-netcfg.yaml
+sudo netplan apply
+
+## Firewalls and FTP
+sudo su = change to root
+ufw will mess up ftp in passive mode as the data port is randomly assigned and not the specific 21
+- restrict by ip address
+```
+sudo ufw allow from 172.16.0.2 to any port 1024:65535
+sudo ufw deny 1024:65535
+check /var/log to get the ip address of the scorer
+```
