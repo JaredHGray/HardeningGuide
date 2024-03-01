@@ -3,11 +3,18 @@
 ## Jared 
 1. change password for blueteam 
 2. ssh and static ip address
-3. firewall
+3. ftp
+4. firewall 
+5. logs 
+6. pam files 
 ## Clayson 
 1. create backup user - assign sudo 
-2. ftp 
+    1. make sure the user has sudo 
+2. system update and upgrade
 3. auditing users 
+    1. look over all users after blackteam
+4. cronjobs 
+5. search for malicious services 
 
 https://1password.com/password-generator/ 
 
